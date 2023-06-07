@@ -1,0 +1,69 @@
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+    }
+.container {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh; /* Ocupa toda la pantalla verticalmente */
+    background-color: #194058;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .div1 {
+    background-color:#805b00;
+    
+  }
+  
+  .div2 {
+    background-color: #194058;
+  }
+  
+  .triangle {
+    background-color:#805b00;
+    transform: rotate(0deg); /* Rota el triángulo rectángulo */
+    width: 100%;
+    height: 100vh;
+    clip-path: polygon(-5% 0%, 100% 0%, 0% 100%);  
+  }
+  
+  
