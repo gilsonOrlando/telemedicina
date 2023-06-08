@@ -5,24 +5,26 @@ new Vue({
     password: ''
   },
   methods: {
-    submitForm() {
-      // Crea un objeto con los datos del formulario
-      const userData = {
+    submitForm: function() {
+      // Crear el objeto con los datos del formulario
+      const data = {
         email: this.email,
         password: this.password
       };
 
-      // Realiza la solicitud POST a la API utilizando Axios
-      axios.post('URL_DE_TU_API', null, { params: userData })
+      // Realizar la solicitud POST a la API
+      axios.post('http://localhost:3000/auth/login', data)
         .then(response => {
-          // Maneja la respuesta de la API
-          console.log(response.data);
-          alert('Inicio de sesión exitoso');
+          // Comprobar el resultado del inicio de sesión
+          if (response.data.success) {
+            alert('Inicio de sesión exitoso');
+          } else {
+            alert('Inicio de sesión incorrecto');
+          }
         })
         .catch(error => {
-          // Maneja los errores de la solicitud
+          alert('Error al realizar la solicitud');
           console.error(error);
-          alert('Error en el inicio de sesión');
         });
     }
   }

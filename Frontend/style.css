@@ -1,69 +1,127 @@
-.login-container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
-  }
-  
-  .form-group {
-    margin-bottom: 10px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  body {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap');
 
-    }
+* {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+#app {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+}
+
+.login-container {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.form-group {
+  width: 100%;
+  display: grid;
+}
+
+.form-group-button {
+  display: grid;
+  justify-content: center;
+}
+
+.form-group-button label {
+  height: 20px;
+}
+
+form {
+  display: grid;
+  align-self: flex-end;
+  gap: 20px;
+  width: 50vh;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 5%;
+}
+
+button {
+  border-radius: 5%;
+  padding: 15px;
+  background: linear-gradient(-45deg, #e74d3c, #354a5f);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 10em;
+
+}
+
+button:hover {
+  background: linear-gradient(-75deg, #e74d3c, #354a5f);
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #edf1f2;
+}
+
 .container {
-    display: grid;
-    position: relative;
-    grid-template-columns: 1fr 1fr 1fr;
-    height: 100vh; /* Ocupa toda la pantalla verticalmente */
-    background-color: #194058;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .div1 {
-    background-color:#805b00;
-    
-  }
-  
-  .div2 {
-    background-color: #194058;
-  }
-  
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100vw;
+  height: 100vh;
+}
+
+.div2 {
+  background-color: #edf1f2;
+  width: 40vw;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.triangle {
+  background: linear-gradient(-45deg, #e74d3c, #354a5f);
+  width: 60vw;
+  transform: rotate(0deg);
+  /* Rota el triángulo rectángulo */
+  height: 100vh;
+  clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+}
+
+@media(max-width: 1110px) {
   .triangle {
-    background-color:#805b00;
-    transform: rotate(0deg); /* Rota el triángulo rectángulo */
-    width: 100%;
-    height: 100vh;
-    clip-path: polygon(-5% 0%, 100% 0%, 0% 100%);  
+    width: 40vh;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 50%);
   }
+}
+
+@media(max-width: 860px) {
+  .triangle {
+    width: 0vh;
+  }
+
+  .div2 {
+    width: 100vw;
+  }
+}
+
+@media(max-width: 425px) {
+  form {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media(max-height: 700px) {
   
-  
+}

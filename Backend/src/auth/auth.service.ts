@@ -5,36 +5,27 @@ import { Auth } from './entities/auth.entity';
 
 @Injectable()
 export class AuthService {
-  private tasks: Auth[] = [
+  private users: Auth[] = [
     {
       id: '1',
-      correo: 'example@gmail.com',
-      contraseña: 'alguna contraseña',
+      email: 'example@example.com',
+      password: 'example',
     },
   ];
-  create(correo: string, contraseña: string) {
+  create(email: string, password: string) {
     const user: Auth = {
       id: new Date().toISOString(),
-      correo,
-      contraseña,
+      email,
+      password,
     };
-    this.tasks.push(user);
+    this.users.push(user);
     return user;
   }
 
-  findAll() {
-    return `This action returns all auth`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+  login(userObjectLogin: CreateAuthDto) {
+    const { email, password } = userObjectLogin;
+    return this.users.find(
+      (user) => user.email === email && user.password === password,
+    );
   }
 }
