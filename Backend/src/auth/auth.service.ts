@@ -24,8 +24,9 @@ export class AuthService {
 
   login(userObjectLogin: CreateAuthDto) {
     const { email, password } = userObjectLogin;
-    return this.users.find(
+    const account = this.users.find(
       (user) => user.email === email && user.password === password,
     );
+    return account ? account : null;
   }
 }
