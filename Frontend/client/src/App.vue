@@ -4,7 +4,13 @@
     <div class="div2">
       <div id="app">
         <div class="login-container">
-          <h2>Iniciar sesión</h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+          <h2 style="margin-top: -1px;">Iniciar sesión</h2>
           <form @submit="submitForm">
             <div class="form-group">
               <label for="username">Correo:</label>
@@ -27,14 +33,14 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       email: '',
       password: ''
     }
   },
   methods: {
-    submitForm: function(e) {
+    submitForm: function (e) {
       //e.preventDefault();
       const data = {
         email: this.email,
@@ -43,7 +49,7 @@ export default {
 
       this.axios.post('http://127.0.0.1:3000/auth/login', data)
         .then(response => {
-          
+
           if (response.data === "") {
             console.log(JSON.stringify(response))
             alert('Inicio de sesión incorrecto');
@@ -62,11 +68,13 @@ export default {
 </script>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap');
 
 * {
   font-family: 'Titillium Web', sans-serif;
 }
+
+
 
 #app {
   width: 100%;
@@ -118,7 +126,7 @@ input[type="password"] {
 button {
   border-radius: 5%;
   padding: 15px;
-  background: linear-gradient(-45deg, #e74d3c, #354a5f);
+  background: linear-gradient(-45deg, #5b84ac, #354a5f);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -127,7 +135,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(-75deg, #e74d3c, #354a5f);
+  background: linear-gradient(-75deg, #5b84ac, #354a5f);
 }
 
 .container {
@@ -139,7 +147,7 @@ button:hover {
 }
 
 .div2 {
-  background-color: #edf1f2;
+  /* background-color: #edf1f2; */
   width: 40vw;
   display: grid;
   justify-items: center;
@@ -147,12 +155,25 @@ button:hover {
 }
 
 .triangle {
-  background: linear-gradient(-45deg, #e74d3c, #354a5f);
+  background: linear-gradient(-45deg, #5b84ac, #161e27);
   width: 60vw;
   transform: rotate(0deg);
   /* Rota el triángulo rectángulo */
   height: 100vh;
   clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+}
+
+.triangle::after {
+  background-image: url(assets/bg1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+  opacity: 0.5;
 }
 
 @media(max-width: 1110px) {
@@ -179,7 +200,5 @@ button:hover {
   }
 }
 
-@media(max-height: 700px) {
-  
-}
+@media(max-height: 700px) {}
 </style>
