@@ -11,14 +11,18 @@
               d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
           </svg>
           <h2 style="margin-top: -1px;">Iniciar sesión</h2>
-          <form @submit="submitForm">
-            <div class="form-group">
-              <label for="username">Correo:</label>
-              <input type="text" id="email" v-model="email" required>
+          <form @submit.prevent="submitForm">
+            <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
+              <label for="email">Correo:</label>
+              <input type="email" id="email" v-model.trim="$v.email.$model" required>
+              <div class="error" v-if="!$v.email.required && $v.email.$error">Campo obligatorio.</div>
+              <div class="error" v-if="!$v.email.email && $v.email.$error">Correo invalido.</div>
             </div>
-            <div class="form-group">
+            <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
               <label for="password">Contraseña:</label>
-              <input type="password" id="password" v-model="password" required>
+              <input type="password" id="password" v-model.trim="$v.password.$model" required>
+              <div class="error" v-if="!$v.password.required && $v.password.$error">Campo obligatorio.</div>
+              <div class="error" v-if="!$v.password.regex && $v.password.$error">La contraseña debe tener entre 8 y 12 caracteres y contener almenos un numero, una letra mayuscula.</div>
             </div>
             <div class="form-group-button">
               <label></label>
@@ -32,11 +36,23 @@
 </template>
 
 <script>
+import { required, email, helpers, alphaNum } from 'vuelidate/lib/validators'
+
 export default {
   data() {
     return {
       email: '',
       password: ''
+    }
+  },
+  validations: {
+    email: {
+      required,
+      email,
+    },
+    password: {
+      required,
+      regex: helpers.regex('password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,12}$/)
     }
   },
   methods: {
@@ -74,7 +90,10 @@ export default {
   font-family: 'Titillium Web', sans-serif;
 }
 
-
+.error {
+  color: rgb(153, 1, 1);
+  font-size: 12px;
+}
 
 #app {
   width: 100%;
@@ -114,7 +133,7 @@ label {
   margin-bottom: 5px;
 }
 
-input[type="text"],
+input[type="email"],
 input[type="password"] {
   width: 100%;
   height: 20px;
@@ -158,7 +177,6 @@ button:hover {
   background: linear-gradient(-45deg, #5b84ac, #161e27);
   width: 60vw;
   transform: rotate(0deg);
-  /* Rota el triángulo rectángulo */
   height: 100vh;
   clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
 }
