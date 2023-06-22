@@ -11,16 +11,16 @@
               d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
           </svg>
           <h2 style="margin-top: -1px;">Iniciar sesión</h2>
-          <form @submit.prevent="submitForm">
+          <form @submit.prevent="submitForm" >
             <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
               <label for="email">Correo:</label>
-              <input type="email" id="email" v-model.trim="$v.email.$model" required>
+              <input type="email" id="email" v-model.trim="$v.email.$model">
               <div class="error" v-if="!$v.email.required && $v.email.$error">Campo obligatorio.</div>
               <div class="error" v-if="!$v.email.email && $v.email.$error">Correo invalido.</div>
             </div>
             <div class="form-group" :class="{ 'form-group--error': $v.password.$error }">
               <label for="password">Contraseña:</label>
-              <input type="password" id="password" v-model.trim="$v.password.$model" required>
+              <input type="password" id="password" v-model.trim.lazy="$v.password.$model">
               <div class="error" v-if="!$v.password.required && $v.password.$error">Campo obligatorio.</div>
               <div class="error" v-if="!$v.password.regex && $v.password.$error">La contraseña debe tener entre 8 y 12 caracteres y contener almenos un numero, una letra mayuscula.</div>
             </div>
@@ -39,6 +39,7 @@
 import { required, email, helpers, alphaNum } from 'vuelidate/lib/validators'
 
 export default {
+  name: 'App',
   data() {
     return {
       email: '',
@@ -56,8 +57,10 @@ export default {
     }
   },
   methods: {
+    
     submitForm: function (e) {
-      //e.preventDefault();
+      this.$v.$touch();
+      if (!this.$v.form_network.$invalid) return null;
       const data = {
         email: this.email,
         password: this.password
