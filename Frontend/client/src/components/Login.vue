@@ -10,8 +10,8 @@
                         <path fill-rule="evenodd"
                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                     </svg>
-
                     <h2 style="margin-top: -1px;">Iniciar sesión</h2>
+                    </div>
                     <!-- <form @submit.prevent="submitForm" >
               <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
                 <label for="email">Correo:</label>
@@ -50,28 +50,42 @@
                 <button type="submit">Ingresar</button>
               </div>
             </form> -->
-                    <form @submit.prevent="submitForm">
-                        <v-text-field v-model="email" :error-messages="emailErrors" label="E-mail" required
-                            @input="$v.email.$touch()" @blur="$v.email.$touch()"></v-text-field>
-                        <v-text-field v-model="password" :error-messages="passwordErrors" :counter="12" label="Password"
-                            required @input="$v.password.$touch()" @blur="$v.password.$touch()"></v-text-field>
-                        <v-row>
-                            <v-col cols="6" lg="6" sm="6" md="4">
-                                <v-btn class="pa-2" @click="submitForm">
-                                    ingresar
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="6" lg="6" sm="6" md="4">
-                                <v-btn class="pa-2" @click="clear">
-                                    limpiar
-                                </v-btn>
-                            </v-col>
-                        </v-row>
-                    </form>
+                <!-- <form @submit.prevent="submitForm" mx-4> -->
+                    <div class="mx-4" >
+                        <!-- <label>email</label> -->
+                        
+                        <v-text-field v-model="form_login.email"
+                        placeholder=" email"
+                        :error-messages="form_login_email_errors"
+                        @input="$v.form_login.email.$touch()" @blur="$v.form_login.email.$touch()"></v-text-field>
+                    </div>
+                        <!-- <label>password</label> -->
+                    <div class="mx-4">
+                        <v-text-field v-model="form_login.password"
+                        placeholder="password" 
+                        :error-messages="form_login_password_errors" :counter="12"
+                        @input="$v.form_login.password.$touch()" @blur="$v.form_login.password.$touch()"></v-text-field>
+                    </div>
+                    <v-row>
+
+                        <v-col cols="6" lg="6" sm="6" md="4">
+                            <v-btn class="pa-2" @click="submitForm">
+                                ingresar
+                            </v-btn>
+                        </v-col>
+                        <v-col cols="6" lg="6" sm="6" md="4">
+                            <v-btn class="pa-2" @click="clear">
+                                limpiar
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                    <!-- </div> -->
+                    </div>
+                        
+                <!-- </form> -->
                 </div>
             </div>
-        </div>
-    </div>
+        
 </template>
   
 <script>
@@ -81,42 +95,47 @@ export default {
     name: 'App',
     data() {
         return {
-            email: '',
-            password: ''
+            form_login: {
+                email: null,
+                password: null
+            },
         }
     },
     validations: {
-        email: {
-            required,
-            email,
-        },
-        password: {
-            required,
-            regex: helpers.regex('password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,12}$/)
+        form_login: {
+            email: {
+                required,
+                email
+            },
+            password: {
+                required,
+                regex: helpers.regex('password', /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,12}$/)
+            }
         }
     },
     computed: {
 
-        emailErrors() {
+        form_login_email_errors() {
             const errors = []
-            if (!this.$v.email.$dirty) return errors
-            !this.$v.email.email && errors.push('Debe ser un correo valido')
-            !this.$v.email.required && errors.push('Correo es requerido.')
+            if (!this.$v.form_login.email.$dirty) return errors
+            !this.$v.form_login.email.email && errors.push('Debe ser un correo valido')
+            !this.$v.form_login.email.required && errors.push('Correo es requerido.')
             return errors
         },
-        passwordErrors() {
+        form_login_password_errors() {
             const errors = []
-            if (!this.$v.password.$dirty) return errors
-            !this.$v.password.regex && errors.push('La contraseña debe tener entre 8 y 12 caracteres, un numero y una letra mayuscula.')
-            !this.$v.password.required && errors.push('Contraseña es requerida.')
+            if (!this.$v.form_login.password.$dirty) return errors
+            !this.$v.form_login.password.regex && errors.push('La contraseña debe tener entre 8 y 12 caracteres y contener almenos un numero, una letra mayuscula.')
+            !this.$v.form_login.password.required && errors.push('Contraseña es requerida.')
+            console.log(errors)
             return errors
         },
     },
     methods: {
-
         submitForm: function (e) {
             this.$v.$touch();
-            if (!this.$v.email.$invalid || !this.$v.password.$invalid) return null;
+            if (this.$v.form_login.$invalid) return null;
+
             const data = {
                 email: this.email,
                 password: this.password
@@ -139,9 +158,10 @@ export default {
                 });
         },
         clear() {
+            //resetear el formulario
             this.$v.$reset()
-            this.email = ''
-            this.password = ''
+            this.form_login.email = ''
+            this.form_login.password = ''
         },
     },
 };
@@ -163,12 +183,13 @@ export default {
     width: 100%;
     display: grid;
     justify-content: center;
+    align-items: center;
 }
 
 .login-container {
-    display: grid;
-    justify-items: center;
     width: 100%;
+    display: grid;
+    justify-content: center;
 }
 
 .form-group {
