@@ -253,7 +253,7 @@ button:hover {
     background-image: url(../assets/bg1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     content: "";
     color: #161e27;
     font-size: larger;
