@@ -36,11 +36,11 @@
                         <br />
                         <label>Correo</label>
                         <v-text-field v-model="form_login.email" placeholder=" ingrese su correo"
-                            :error-messages="form_login_email_errors" @input="$v.form_login.email.$touch()"
+                            :error-messages="form_login_email_errors" class="text--error" @input="$v.form_login.email.$touch()"
                             @blur="$v.form_login.email.$touch()"></v-text-field>
                         <label>Contraseña</label>
-                        <v-text-field v-model="form_login.password" placeholder="password"
-                            :error-messages="form_login_password_errors" :counter="12"
+                        <v-text-field v-model="form_login.password" placeholder="ingrese su contraseña"
+                            :error-messages="form_login_password_errors" :counter="12" class="text--error"
                             @input="$v.form_login.password.$touch()" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                             :type="show ? 'text' : 'password'" @click:append="show = !show"
                             @blur="$v.form_login.password.$touch()"></v-text-field>
@@ -265,6 +265,7 @@ button:hover {
 }
 
 .card {
+    width: 400px;
     justify-self: center;
     align-self: center;
 }
