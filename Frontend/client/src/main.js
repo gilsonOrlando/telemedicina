@@ -15,11 +15,15 @@ import 'vuetify/dist/vuetify.min.css';
 
 // importar hello-world
 import Login from './components/Login.vue'
+import Register from './components/Register.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 const routes = [
-  { path: '/', component: HelloWorld},
-  { path: '/login', component: Login }
+  { path: '*', redirect: '/' },
+  { path: '/', component: HelloWorld },
+  { path: '/login', component: Login },
+  { path: '/register', component: Register }
+  //redirigir a la pagina de hello-world si la ruta no existe
 ]
 
 Vue.use(VueAxios, axios);
