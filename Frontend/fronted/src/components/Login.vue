@@ -3,47 +3,47 @@
         <v-row class="container">
             <v-col class="triangle"></v-col>
             <v-col class="column">
-                <v-card class="card">
+                <!-- <div class="mx-4">
+                    <h2 style="margin-top: -1px;">Iniciar sesión</h2>
+                </div>
+                <div class="mx-4">
+                    
+                    <v-text-field v-model="form_login.email" placeholder=" email" :error-messages="form_login_email_errors"
+                        @input="$v.form_login.email.$touch()" @blur="$v.form_login.email.$touch()"></v-text-field>
+
+
+                    <v-text-field v-model="form_login.password" placeholder="password"
+                        :error-messages="form_login_password_errors" :counter="12" @input="$v.form_login.password.$touch()" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'" :type="show ? 'text' : 'password'"
+                        @click:append="show = !show" @blur="$v.form_login.password.$touch()"></v-text-field>
+                </div>
+                <div class="mx-4" style="margin-top: 2em;">
+
+                    <v-btn class="pa-2" @click="submitForm">
+                        ingresar
+                    </v-btn>
+                    <v-btn class="pa-2" @click="clear">
+                        limpiar
+                    </v-btn>
+                </div> -->
+
+                <v-card class="card" max-width="500">
                     <v-card-title>
                         <center>
-                            <h2 style="margin-top: -1px;">Registrarse</h2>
+                            <h2 style="margin-top: -1px;">Iniciar sesión</h2>
                         </center>
                     </v-card-title>
                     <v-card-text>
                         <br />
-                        <v-row>
-                            <v-col cols="12" md="6">
-                                <label>Foto de perfil</label>
-                                <v-file-input truncate-length="18" accept="image/*" placeholder=" seleccione archivo"
-                                    outlined dense chips prepend-icon="mdi-camera"></v-file-input>
-
-                                <label>Nombres</label>
-                                <v-text-field placeholder="Juan Ignacio"></v-text-field>
-
-                                <label>Apellidos</label>
-                                <v-text-field placeholder="Flores Paz"></v-text-field>
-
-                                <label>Cédula de identidad</label>
-                                <v-text-field placeholder="0987654321"></v-text-field>
-
-                                <label>Sexo</label>
-                                <v-select v-model="form_register.sexo" :items="sexo_values" placeholder="Seleccione..."/>
-                            </v-col>
-                            <v-col cols="12" md="6">
-                                <label>Correo</label>
-                                <v-text-field v-model="form_register.email" placeholder=" ingrese su correo"
-                                    :error-messages="form_login_email_errors" class="text--error"
-                                    @input="$v.form_register.email.$touch()"
-                                    @blur="$v.form_register.email.$touch()"></v-text-field>
-
-                                <label>Contraseña</label>
-                                <v-text-field v-model="form_register.password" placeholder="ingrese su contraseña"
-                                    :error-messages="form_login_password_errors" :counter="12" class="text--error"
-                                    @input="$v.register.password.$touch()" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                    :type="show ? 'text' : 'password'" @click:append="show = !show"
-                                    @blur="$v.form_register.password.$touch()"></v-text-field>
-                            </v-col>
-                        </v-row>
+                        <label>Correo</label>
+                        <v-text-field v-model="form_login.email" placeholder=" ingrese su correo"
+                            :error-messages="form_login_email_errors" class="text--error" @input="$v.form_login.email.$touch()"
+                            @blur="$v.form_login.email.$touch()"></v-text-field>
+                        <label>Contraseña</label>
+                        <v-text-field v-model="form_login.password" placeholder="ingrese su contraseña"
+                            :error-messages="form_login_password_errors" :counter="12" class="text--error"
+                            @input="$v.form_login.password.$touch()" :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                            :type="show ? 'text' : 'password'" @click:append="show = !show"
+                            @blur="$v.form_login.password.$touch()"></v-text-field>
                         <br />
                         <center>
                             <v-btn class="pa-2" @click="submitForm">
@@ -52,38 +52,31 @@
                             <v-btn class="pa-2" @click="clear">
                                 limpiar
                             </v-btn>
-                            <br /><br />
+                            <br />
+                            <br />
                             <label for="">¿Todavía no estas registrado?
-                                <a href="#">¡Inscribirse!</a> </label>
+                                <a href="#">¡Inscribirse!</a> </label><br />
                         </center>
                     </v-card-text>
                 </v-card>
+
             </v-col>
+            <!-- </form> -->
         </v-row>
     </section>
 </template>
   
 <script>
-import { required, email, helpers, alphaNum } from 'vuelidate/lib/validators'
+import { required, email, helpers } from 'vuelidate/lib/validators'
 
 export default {
     name: 'App',
     data() {
         return {
             show: false,
-            sexo_values: [
-                'Masculino',
-                'Femenino',
-                'Otro'
-            ],
-            form_register: {
-                foto_perfil: '',
-                nombres: '',
-                apellidos: '',
-                cedula: '',
-                sexo: '',
-                correo: '',
-                contrasena: '',
+            form_login: {
+                email: null,
+                password: null
             },
         }
     },
@@ -118,7 +111,7 @@ export default {
         },
     },
     methods: {
-        submitForm: function (e) {
+        submitForm: function () {
             this.$v.$touch();
             if (this.$v.form_login.$invalid) return null;
 
@@ -160,6 +153,38 @@ export default {
     font-family: 'Titillium Web', sans-serif;
 }
 
+.error {
+    color: rgb(153, 1, 1);
+    font-size: 12px;
+}
+
+#app {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.login-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.form-group {
+    width: 100%;
+    display: grid;
+}
+
+.form-group-button {
+    display: grid;
+    justify-content: center;
+}
+
+.form-group-button label {
+    height: 20px;
+}
+
 form {
     display: grid;
     align-self: flex-end;
@@ -172,12 +197,13 @@ label {
     margin-bottom: 5px;
 }
 
-.v-text-field {
-    padding: 0;
-}
-
-input {
-    padding: unset;
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    height: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 5%;
 }
 
 button {
@@ -205,9 +231,17 @@ button:hover {
     margin: 0;
 }
 
+.div2 {
+    /* background-color: #edf1f2; */
+    display: grid;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 .triangle {
     background: linear-gradient(-45deg, #5b84ac, #161e27);
-    width: 40vh;
+    width: 60vw;
     margin: 0;
     padding: 0;
     transform: rotate(0deg);
@@ -219,7 +253,7 @@ button:hover {
     background-image: url(../assets/bg1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: left;
     content: "";
     color: #161e27;
     font-size: larger;
@@ -231,20 +265,20 @@ button:hover {
 }
 
 .card {
-    width: 100%;
+    width: 400px;
     justify-self: center;
     align-self: center;
 }
 
 .column {
-    display: grid;
-    width: 60vw;
-    grid-template-columns: 1fr;
-    justify-self: center;
-    align-self: center;
-}
+        display: grid;
+        width: 40vw;
+        grid-template-columns: 1fr;
+        justify-self: center;
+        align-self: center;
+    } 
 
-.pa-2 {
+.pa-2{
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
@@ -255,29 +289,10 @@ button:hover {
         width: 40vh;
         /* clip-path: polygon(0% 0%, 100% 0%, 0% 50%); */
     }
-}
+    .column {
+        width: auto;
+    } 
 
-@media(max-width: 960px) {
-    .container{
-        position: absolute;
-    }
-    .triangle {
-        height: auto;
-    }
-    .triangle::after {
-        background-image: url(../assets/bg1.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        content: "";
-        color: #161e27;
-        font-size: larger;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
-        opacity: 0.5;
-}
 }
 
 @media(max-width: 700px) {
@@ -285,22 +300,20 @@ button:hover {
         margin-left: 20px;
         margin-right: 20px;
     }
-
     .triangle {
         display: none;
     }
-
+    
     .container {
         grid-template-columns: 1fr;
     }
-
     .column {
         width: auto;
-    }
-
+    } 
     .card {
-        width: auto;
+        width:auto;
     }
-
+    
 }
+
 </style>

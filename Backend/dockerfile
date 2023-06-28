@@ -1,0 +1,8 @@
+# Utiliza una imagen base de MongoDB desde Docker Hub
+FROM mongo:latest
+
+# Copia el archivo de inicialización de MongoDB a la imagen
+COPY init-mongo.js /docker-entrypoint-initdb.d/
+
+# Expone el puerto en el que MongoDB escucha por conexiones (por defecto es 27017)
+EXPOSE 27017
