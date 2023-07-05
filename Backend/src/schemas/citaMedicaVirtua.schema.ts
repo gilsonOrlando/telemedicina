@@ -12,7 +12,7 @@ export class citaMedicaVirtual {
   tiempo_espera_aprox: number;
 
   @Prop({required:true, unique:true, enum: TipoEstado})
-  estado: String;
+  es_estado: String;
 
 }
 export const citaMedicaVirtualchema = SchemaFactory.createForClass(citaMedicaVirtual);

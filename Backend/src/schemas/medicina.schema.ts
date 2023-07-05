@@ -8,7 +8,7 @@ export type MedicinaDocument = HydratedDocument<Medicina>;
 @Schema()
 export class Medicina {
   @Prop({required:true, unique:true})
-  nombre: number;
+  nombre: String;
 
   @Prop({required:true, unique:true})
   descripcion: String;

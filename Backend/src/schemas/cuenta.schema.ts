@@ -15,10 +15,10 @@ export class Cuenta {
   contrasenia: String;
 
   @Prop({required:true})
-  estado: String;
+  es_activo: Boolean;
 
   @Prop({required:true, enum:Rol})
-    rol: String;
+  rol: String;
 
 }
 export const Cuentachema = SchemaFactory.createForClass(Cuenta);
