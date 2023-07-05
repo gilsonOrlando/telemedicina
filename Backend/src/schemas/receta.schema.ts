@@ -9,7 +9,7 @@ export type RecetaDocument = HydratedDocument<Receta>;
 @Schema()
 export class Receta {
   @Prop({required:true, unique:true})
-  dosis: number;
+  dosis: String;
 
  @Prop({
     type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'Medicina' }],
