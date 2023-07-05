@@ -15,7 +15,7 @@ export class Paciente extends Persona{
   historiaMedico: String;
 
   @Prop({required:true})
-  antecedentesFamiliares: number;
+  antecedentesFamiliares: String;
 
   @Prop({required:true ,unique:true})
   otros: String;
