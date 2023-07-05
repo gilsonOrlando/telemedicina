@@ -8,7 +8,7 @@ export type EnfermedadDocument = HydratedDocument<Enfermedad>;
 @Schema()
 export class Enfermedad {
   @Prop({required:true, unique:true})
-  nombre: number;
+  nombre: String;
 
   @Prop({required:true, unique:true})
   descripcion: String;
