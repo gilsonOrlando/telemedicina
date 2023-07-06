@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { Revision } from './revision.schema';
 
 //TODO el schema de los Circuitos
 export type ZonaDocument = HydratedDocument<Historia_clinica>;
@@ -21,5 +22,9 @@ export class Historia_clinica {
 
   @Prop({required:true ,unique:true,type: [String]})
   tratamiento: String[];
+  @Prop({
+    type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Revision' }],
+  })
+  revisiones: Revision[];
 }
 export const ZonaSchema = SchemaFactory.createForClass(Historia_clinica);

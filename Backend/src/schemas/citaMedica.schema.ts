@@ -6,6 +6,7 @@ import { Zona } from './zona.schema';
 import { Diagnostico } from './diagnostico.schema';
 import { Paciente } from './paciente.schema';
 import { Doctor } from './doctor.schema';
+import { Revision } from './revision.schema';
 //TODO el schema de los Circuitos
 export type CitaMedicaDocument = HydratedDocument<CitaMedica>;
 
@@ -43,6 +44,9 @@ export class CitaMedica {
     type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' }],
   })
   doctor: Doctor;
-
+  @Prop({
+    type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Revision' }],
+  })
+  revision: Revision;
 }
 export const CitaMedicaSchema = SchemaFactory.createForClass(CitaMedica);

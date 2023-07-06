@@ -7,6 +7,8 @@ import { Revision } from './revision.schema';
 import { Persona } from './persona.schemas';
 import { CitaMedica } from './citaMedica.schema';
 import { Historia_clinica } from './historiaClinica.schema';
+import { Alergia } from './alergia.schema';
+import { Cirugia } from './cirugia.schema';
 
 //TODO el schema de los Circuitos
 export type PacienteDocument = HydratedDocument<Paciente>;
@@ -31,5 +33,15 @@ export class Paciente extends Persona{
       type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'HistoriaClinica' }],
       })
       Historia_clinica: Historia_clinica;
+
+      @Prop({
+        type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Alergia' }],
+      })
+      alergias: Alergia[];
+
+      @Prop({
+        type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Cirugias' }],
+      })
+      cirugias: Cirugia[];
 }
 export const PacienteSchema = SchemaFactory.createForClass(Paciente);
