@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { CitaMedica } from './citaMedica.schema';
+import { ConsultaPadecimiento } from './consultaPadecimiento.schema';
 
 //TODO el schema de los Circuitos
 export type RecomendacionDocument = HydratedDocument<Recomendacion>;
@@ -15,8 +15,14 @@ export class Recomendacion {
   descripcion: String;
   
   @Prop({
-  type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'CitaMedica' }],
+  type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'ConsultaPadecimiento' }],
   })
-  recomendaciones: CitaMedica[];
+  recomendaciones: ConsultaPadecimiento;
+ 
+  @Prop({required:true, unique:true})
+  area: String[];
+
+  @Prop({required:true, unique:true})
+  sintomaGenerico: String;
 }
 export const Recomendacionchema = SchemaFactory.createForClass(Recomendacion);

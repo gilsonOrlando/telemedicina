@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { SintomaGenerico } from './enums/sintomaGenerico.enum';
 //TODO el schema de los Circuitos
 export type ConsultaPadecimientoDocument = HydratedDocument<ConsultaPadecimiento>;
 
@@ -15,7 +14,7 @@ export class ConsultaPadecimiento {
   @Prop({required:true})
   tiempo_padecimiento: Number;
 
-  @Prop({required:true, enum:SintomaGenerico})
-  sintoma: String;
+  @Prop({required:true})
+  sintoma: String[];
 }
 export const ConsultaPadecimientoSchema = SchemaFactory.createForClass(ConsultaPadecimiento);
