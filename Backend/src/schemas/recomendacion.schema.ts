@@ -20,9 +20,6 @@ export class Recomendacion {
   recomendaciones: ConsultaPadecimiento;
  
   @Prop({required:true, unique:true})
-  area: String[];
-
-  @Prop({required:true, unique:true})
-  sintomaGenerico: String;
+  area: String[]
 }
 export const Recomendacionchema = SchemaFactory.createForClass(Recomendacion);

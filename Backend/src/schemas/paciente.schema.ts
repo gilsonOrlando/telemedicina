@@ -5,6 +5,8 @@ import { Cuenta } from './cuenta.schema';
 import { ConsultaPadecimiento } from './consultaPadecimiento.schema';
 import { Revision } from './revision.schema';
 import { Persona } from './persona.schemas';
+import { CitaMedica } from './citaMedica.schema';
+import { Historia_clinica } from './historiaClinica.schema';
 
 //TODO el schema de los Circuitos
 export type PacienteDocument = HydratedDocument<Paciente>;
@@ -12,12 +14,22 @@ export type PacienteDocument = HydratedDocument<Paciente>;
 @Schema()
 export class Paciente extends Persona{
   @Prop({required:true,unique:true})
-  historiaMedico: String;
+  historial_medico: String;
 
   @Prop({required:true})
-  antecedentesFamiliares: String;
+  antecedentes_familiares: String;
 
   @Prop({required:true ,unique:true})
   otros: String;
+
+  @Prop({
+    type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'CitaMedica' }],
+    })
+    citas_medicas: CitaMedica[];
+
+    @Prop({
+      type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'HistoriaClinica' }],
+      })
+      Historia_clinica: Historia_clinica;
 }
 export const PacienteSchema = SchemaFactory.createForClass(Paciente);

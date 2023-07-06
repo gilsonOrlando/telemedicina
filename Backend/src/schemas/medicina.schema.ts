@@ -13,5 +13,8 @@ export class Medicina {
   @Prop({required:true, unique:true})
   descripcion: String;
 
+  @Prop({required:true, unique:true})
+  dosis: String;
+
 }
 export const Medicinachema = SchemaFactory.createForClass(Medicina);

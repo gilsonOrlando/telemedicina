@@ -12,8 +12,8 @@ export class Alergia {
   @Prop()
   descripcion: String;
   @Prop({
-    type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'Persona' }],
-      })
-    persona: Persona[];
+    type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Persona' }],
+  })
+  persona: Persona[];
 }
 export const CategorySchema = SchemaFactory.createForClass(Alergia);
