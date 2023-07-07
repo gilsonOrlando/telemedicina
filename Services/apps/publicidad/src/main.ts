@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { NoticiasModule } from './noticias.module';
+import { PublicidadModule } from './publicidad.module';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(NoticiasModule);
+  const app = await NestFactory.create(PublicidadModule);
   app.useGlobalPipes(new ValidationPipe());
   const configService = app.get(ConfigService);
   await app.listen(configService.get('PORT'));
