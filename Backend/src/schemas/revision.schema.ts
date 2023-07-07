@@ -2,7 +2,8 @@ import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { TipoRevision } from './enums/revisionTipo.enum';
-import { CitaMedica } from './citaMedica.schema';
+import { Persona } from './persona.schemas';
+
 //TODO el schema de los Circuitos
 export type RevisionDocument = HydratedDocument<Revision>;
 
@@ -14,10 +15,9 @@ export class Revision {
 
   @Prop({required:true})
   resultado: String;
-  
   @Prop({
-    type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'CitaMedica' }],
+    type: [{ required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Persona' }],
   })
-  cita_medica: CitaMedica;
+  revision_persona: Persona;
 }
 export const RevisionSchema = SchemaFactory.createForClass(Revision);
