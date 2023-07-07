@@ -14,7 +14,7 @@ export class Persona {
   nombre: String;
 
   @Prop({required:true})
-  edad: number;
+  edad: Number;
 
   @Prop({required:true ,unique:true})
   correo: String;

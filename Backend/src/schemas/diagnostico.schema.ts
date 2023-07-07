@@ -10,7 +10,7 @@ export type DiagnosticoDocument = HydratedDocument<Diagnostico>;
 @Schema()
 export class Diagnostico {
   @Prop({required:true, unique:true})
-  observacion: number;
+  observacion: String;
 
   @Prop({
     type: [{ required:true, type: mongoose.Schema.Types.ObjectId, ref: 'Enfermedad' }],
