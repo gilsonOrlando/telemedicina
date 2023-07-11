@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CitasController } from './citas.controller';
-import { CitasService } from './citas.service';
+import { CitasController } from './controllers/citaMedicaPresencial.controller';
+import { CitasService } from './services/citaMedicaPresencial.service';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
