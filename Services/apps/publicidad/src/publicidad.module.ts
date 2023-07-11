@@ -19,7 +19,9 @@ import { PublicidadRepository } from './publicidad.repository';
       envFilePath: './apps/publicidad/.env',
     }),
     DatabaseModule,
-    MongooseModule.forFeature([{ name: Publicidad.name, schema: PublicidadSchema }]),
+    MongooseModule.forFeature([
+      { name: Publicidad.name, schema: PublicidadSchema },
+    ]),
   ],
   controllers: [PublicidadController],
   providers: [PublicidadService, PublicidadRepository],

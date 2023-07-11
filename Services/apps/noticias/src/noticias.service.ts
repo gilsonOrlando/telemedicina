@@ -5,9 +5,7 @@ import { Noticia } from './schemas/noticias.schema';
 
 @Injectable()
 export class NoticiasService {
-  constructor(
-    private readonly noticiasRepository: NoticiasRepository,  
-  ) {}
+  constructor(private readonly noticiasRepository: NoticiasRepository) {}
 
   async getNoticias() {
     return this.noticiasRepository.find({});

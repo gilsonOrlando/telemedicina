@@ -8,7 +8,6 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { NoticiasRepository } from './noticias.repository';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,7 +20,6 @@ import { NoticiasRepository } from './noticias.repository';
     }),
     DatabaseModule,
     MongooseModule.forFeature([{ name: Noticia.name, schema: NoticiaSchema }]),
-
   ],
   controllers: [NoticiasController],
   providers: [NoticiasService, NoticiasRepository],

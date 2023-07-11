@@ -6,12 +6,12 @@ import { AbstractRepository } from '@app/common';
 
 @Injectable()
 export class PublicidadRepository extends AbstractRepository<Publicidad> {
-    protected readonly logger = new Logger(PublicidadRepository.name);
-    
-    constructor(
-        @InjectModel(Publicidad.name) publicidadModel: Model<Publicidad>,
-        @InjectConnection() connection: Connection,
-    ) {
-        super(publicidadModel, connection);
-    }
+  protected readonly logger = new Logger(PublicidadRepository.name);
+
+  constructor(
+    @InjectModel(Publicidad.name) publicidadModel: Model<Publicidad>,
+    @InjectConnection() connection: Connection,
+  ) {
+    super(publicidadModel, connection);
+  }
 }

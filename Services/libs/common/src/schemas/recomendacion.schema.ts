@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { CitaMedica } from './citaMedica.schema';
+import { CitaMedica } from '../../../../apps/citas/src/schemas/citaMedica.schema';
 
 //TODO el schema de los Circuitos
 export type RecomendacionDocument = HydratedDocument<Recomendacion>;

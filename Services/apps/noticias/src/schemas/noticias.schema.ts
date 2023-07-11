@@ -5,8 +5,8 @@ import { AbstractDocument } from '@app/common';
 //TODO el schema de los Circuitos
 export type NoticiaDocument = HydratedDocument<Noticia>;
 
-@Schema({ versionKey: false})
-export class Noticia extends AbstractDocument{
+@Schema({ versionKey: false })
+export class Noticia extends AbstractDocument {
   @Prop({ required: true })
   titulo: string;
 

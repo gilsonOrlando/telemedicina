@@ -34,6 +34,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/publicidad/tsconfig.app.json"
       }
+    },
+    "citas": {
+      "type": "application",
+      "root": "apps/citas",
+      "entryFile": "main",
+      "sourceRoot": "apps/citas/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/citas/tsconfig.app.json"
+      }
     }
   }
 }

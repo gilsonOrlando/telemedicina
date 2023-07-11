@@ -1,12 +1,12 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { SintomaGenerico } from './enums/sintomaGenerico.enum';
-import { Recomendacion } from './recomendacion.schema';
+import { SintomaGenerico } from '../../../../libs/common/src/schemas/enums/sintomaGenerico.enum';
+import { Recomendacion } from '../../../../libs/common/src/schemas/recomendacion.schema';
 import { Zona } from './zona.schema';
 import { Diagnostico } from './diagnostico.schema';
-import { Paciente } from './paciente.schema';
-import { Doctor } from './doctor.schema';
+import { Paciente } from '../../../../libs/common/src/schemas/paciente.schema';
+import { Doctor } from '../../../../libs/common/src/schemas/doctor.schema';
 //TODO el schema de los Circuitos
 export type CitaMedicaDocument = HydratedDocument<CitaMedica>;
 
