@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { NoticiasService } from './noticias.service';
-import { Noticia } from './schemas/noticias.schema';
+import { createNoticiaDto } from './noticias.dto';
 
 @Controller()
 export class NoticiasController {
@@ -11,7 +11,7 @@ export class NoticiasController {
     return this.noticiasService.getNoticias();
   }
   @Post('noticias')
-  createNoticia(@Body() noticia: Noticia) {
+  createNoticia(@Body() noticia: createNoticiaDto) {
     return this.noticiasService.createNoticia(noticia);
   }
 }

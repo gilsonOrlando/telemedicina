@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { NoticiasRepository } from './noticias.repository';
-import { Noticia } from './schemas/noticias.schema';
+import { createNoticiaDto } from './noticias.dto';
 
 @Injectable()
 export class NoticiasService {
@@ -10,7 +10,7 @@ export class NoticiasService {
   async getNoticias() {
     return this.noticiasRepository.find({});
   }
-  async createNoticia(noticia: Noticia) {
+  async createNoticia(noticia: createNoticiaDto) {
     return this.noticiasRepository.create(noticia);
   }
 }
