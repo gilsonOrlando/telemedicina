@@ -12,7 +12,7 @@ import { Receta } from './schemas/receta.schema'
 import { Zona } from './schemas/zona.schema'
 
 @Injectable() 
-export class CitasRepository extends AbstractRepository<CitaMedica> {
+export class CitasRepository extends AbstractRepository<CitaMedica | CitaMedicaPresencial | CitaMedicaVirtual | Diagnostico | Enfermedad | Medicina | Receta | Zona > {
     protected readonly logger = new Logger(CitasRepository.name);
     private citaMedicaModel: Model<CitaMedica>;
     private citaMedicaPresencialModel: Model<CitaMedicaPresencial>;

@@ -11,49 +11,45 @@ import { AbstractDocument } from '@app/common';
 //TODO el schema de los Circuitos
 export type CitaMedicaDocument = HydratedDocument<CitaMedica>;
 
-@Schema()
+@Schema({ versionKey: false })
 export class CitaMedica extends AbstractDocument{
-  @Prop({ required: true })
+  @Prop({ required: true, })
   especialidad: string;
 
-  @Prop({
-    type: [
-      { required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Zona' },
-    ],
-  })
-  zona_dolor: Zona[];
-  @Prop({
-    type: [
-      {
-        required: true,
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Diagnostico',
-      },
-    ],
-  })
-  diagnostico_presuntivo: Diagnostico[];
+  // @Prop({
+  //   type: [
+  //     { required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Zona' },
+  //   ],
+  // })
+  // zona_dolor: Zona[];
+  // @Prop({
+  //   type: [
+  //     {
+  //       required: true,
+  //       type: mongoose.Schema.Types.ObjectId,
+  //       ref: 'Diagnostico',
+  //     },
+  //   ],
+  // })
+  @Prop({ required: true })
+  diagnostico_presuntivo: string[];
 
-  @Prop({
-    type: [
-      { required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Paciente' },
-    ],
-  })
-  paciente: Paciente;
-  @Prop({
-    type: [
-      {
-        required: true,
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recomendacion',
-      },
-    ],
-  })
-  recomendacion: Recomendacion;
-  @Prop({
-    type: [
-      { required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' },
-    ],
-  })
-  doctor: Doctor;
+  // @Prop({
+  //   type: [
+  //     { required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Paciente' },
+  //   ],
+  // })
+  // paciente: Paciente;
+  @Prop({ required: true })
+  recomendacion: string[];
+  // @Prop({
+  //   type: [
+  //     { required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' },
+  //   ],
+  // })
+  // doctor: Doctor;
+  @Prop({ required: true })
+  fecha: Date;
+  // 2023-07-11T12:34:56.789Z
 }
 export const CitaMedicaSchema = SchemaFactory.createForClass(CitaMedica);

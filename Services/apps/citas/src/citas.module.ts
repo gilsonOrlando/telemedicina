@@ -13,6 +13,7 @@ import { Medicina, Medicinachema } from './schemas/medicina.schema'
 import { Receta, Recetachema } from './schemas/receta.schema'
 import { Zona, ZonaSchema } from './schemas/zona.schema'
 import * as Joi from 'joi';
+import { CitasRepository } from './citas.repository';
 
 @Module({
   imports: [
@@ -25,16 +26,18 @@ import * as Joi from 'joi';
       envFilePath: './apps/citas/.env',
     }),
     DatabaseModule,
-    MongooseModule.forFeature([{ name: CitaMedica.name, schema: CitaMedicaSchema }]),
-    MongooseModule.forFeature([{ name: CitaMedicaPresencial.name, schema: citaMedicaPresencialchema }]),
-    MongooseModule.forFeature([{ name: CitaMedicaVirtual.name, schema: CitaMedicaVirtualSchema }]),
-    MongooseModule.forFeature([{ name: Diagnostico.name, schema: Diagnosticochema }]),
-    MongooseModule.forFeature([{ name: Enfermedad.name, schema: Enfermedadschema }]),
-    MongooseModule.forFeature([{ name: Medicina.name, schema: Medicinachema }]),
-    MongooseModule.forFeature([{ name: Receta.name, schema: Recetachema }]),
-    MongooseModule.forFeature([{ name: Zona.name, schema: ZonaSchema }]),
+    MongooseModule.forFeature([
+      { name: CitaMedica.name, schema: CitaMedicaSchema },
+      { name: CitaMedicaPresencial.name, schema: citaMedicaPresencialchema },
+      { name: CitaMedicaVirtual.name, schema: CitaMedicaVirtualSchema },
+      { name: Diagnostico.name, schema: Diagnosticochema },
+      { name: Enfermedad.name, schema: Enfermedadschema },
+      { name: Medicina.name, schema: Medicinachema },
+      { name: Receta.name, schema: Recetachema },
+      { name: Zona.name, schema: ZonaSchema },
+    ]),
   ],
   controllers: [CitasController],
-  providers: [CitasService],
+  providers: [CitasService, CitasRepository],
 })
 export class CitasModule {}
