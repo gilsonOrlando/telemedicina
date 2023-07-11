@@ -3,11 +3,11 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 //TODO el schema de los Circuitos
-export type citaMedicaPresencialDocument =
-  HydratedDocument<citaMedicaPresencial>;
+export type CitaMedicaPresencialDocument =
+  HydratedDocument<CitaMedicaPresencial>;
 
 @Schema()
-export class citaMedicaPresencial {
+export class CitaMedicaPresencial {
   @Prop({ required: true, unique: true })
   tiempo_espera_aprox: number;
 
@@ -15,4 +15,4 @@ export class citaMedicaPresencial {
   lugar: string;
 }
 export const citaMedicaPresencialchema =
-  SchemaFactory.createForClass(citaMedicaPresencial);
+  SchemaFactory.createForClass(CitaMedicaPresencial);
