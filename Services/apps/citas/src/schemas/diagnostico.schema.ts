@@ -3,12 +3,13 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { Enfermedad } from './enfermedad.schema';
 import { Receta } from './receta.schema';
+import { AbstractDocument } from '@app/common';
 
 //TODO el schema de los Circuitos
 export type DiagnosticoDocument = HydratedDocument<Diagnostico>;
 
 @Schema()
-export class Diagnostico {
+export class Diagnostico extends AbstractDocument {
   @Prop({ required: true, unique: true })
   observacion: number;
 

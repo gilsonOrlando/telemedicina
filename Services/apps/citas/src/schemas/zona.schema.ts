@@ -1,3 +1,4 @@
+import { AbstractDocument } from '@app/common';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
@@ -5,7 +6,7 @@ import { HydratedDocument } from 'mongoose';
 export type ZonaDocument = HydratedDocument<Zona>;
 
 @Schema()
-export class Zona {
+export class Zona extends AbstractDocument {
   @Prop({ required: true })
   nombre: string;
 

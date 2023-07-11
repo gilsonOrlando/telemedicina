@@ -7,11 +7,12 @@ import { Zona } from './zona.schema';
 import { Diagnostico } from './diagnostico.schema';
 import { Paciente } from '../../../../libs/common/src/schemas/paciente.schema';
 import { Doctor } from '../../../../libs/common/src/schemas/doctor.schema';
+import { AbstractDocument } from '@app/common';
 //TODO el schema de los Circuitos
 export type CitaMedicaDocument = HydratedDocument<CitaMedica>;
 
 @Schema()
-export class CitaMedica {
+export class CitaMedica extends AbstractDocument{
   @Prop({ required: true })
   especialidad: string;
 
