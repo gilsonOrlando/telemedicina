@@ -11,7 +11,7 @@ export class CitaMedicaVirtual extends CitaMedica {
   @Prop({ required: true, unique: true })
   tiempo_espera_aprox: number;
 
-  @Prop({ required: true})
+  @Prop({ required: true })
   estado: string;
 }
 export const CitaMedicaVirtualSchema =

@@ -12,8 +12,8 @@ import { AbstractDocument } from '@app/common';
 export type CitaMedicaDocument = HydratedDocument<CitaMedica>;
 
 @Schema({ versionKey: false })
-export class CitaMedica extends AbstractDocument{
-  @Prop({ required: true, })
+export class CitaMedica extends AbstractDocument {
+  @Prop({ required: true })
   especialidad: string;
 
   // @Prop({

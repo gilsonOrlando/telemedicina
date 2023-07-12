@@ -7,7 +7,7 @@ import { AbstractDocument } from '@app/common';
 export type EnfermedadDocument = HydratedDocument<Enfermedad>;
 
 @Schema()
-export class Enfermedad extends AbstractDocument{
+export class Enfermedad extends AbstractDocument {
   @Prop({ required: true, unique: true })
   nombre: number;
 

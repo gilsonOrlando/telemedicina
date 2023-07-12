@@ -8,16 +8,20 @@ export type RecomendacionDocument = HydratedDocument<Recomendacion>;
 
 @Schema()
 export class Recomendacion {
-  @Prop({ required: true})
+  @Prop({ required: true })
   nombre: string;
 
-  @Prop({ required: true})
+  @Prop({ required: true })
   descripcion: string;
 
-  @Prop({required: true})
+  @Prop({ required: true })
   area: string[];
 
-  @Prop({required: true, type: mongoose.Schema.Types.ObjectId, ref: 'ConsultaPadecimiento'})
+  @Prop({
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ConsultaPadecimiento',
+  })
   consultaPadecimiento: ConsultaPadecimiento[];
 }
 export const Recomendacionchema = SchemaFactory.createForClass(Recomendacion);

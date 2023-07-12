@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/swagger';
 
-export class createCitaMedicaPresencialDto {
+export class createCitaMedicaVirtualDto {
   readonly especialidad: string;
   readonly diagnostico_presuntivo: string[];
   readonly recomendacion: string[];
@@ -9,6 +9,6 @@ export class createCitaMedicaPresencialDto {
   readonly lugar: string;
 }
 
-export class updateCitaMedicaPresencialDto extends PartialType(
-  createCitaMedicaPresencialDto,
+export class updateCitaMedicaVirtualDto extends PartialType(
+  createCitaMedicaVirtualDto,
 ) {}

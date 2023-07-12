@@ -9,10 +9,10 @@ export type CitaMedicaPresencialDocument =
 
 @Schema({ versionKey: false })
 export class CitaMedicaPresencial extends CitaMedica {
-  @Prop({ required: true})
+  @Prop({ required: true })
   tiempo_espera_aprox: number;
 
-  @Prop({ required: true})
+  @Prop({ required: true })
   lugar: string;
 }
 export const citaMedicaPresencialchema =

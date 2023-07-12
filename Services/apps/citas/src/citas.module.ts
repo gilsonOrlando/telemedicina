@@ -1,17 +1,30 @@
 import { Module } from '@nestjs/common';
-import { CitasController } from './controllers/citaMedicaPresencial.controller';
-import { CitasService } from './services/citaMedicaPresencial.service';
+
+// controllers
+import { CitaVirtualController } from './controllers/citaMedicaPresencial.controller';
+import { CitaPresencialController } from './controllers/citaMedicaVirtual.controller';
+
+// services
+import { CitaPresencialService } from './services/citaMedicaPresencial.service';
+import { CitaVirtualService } from './services/citaMedicaVirtual.service';
+
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CitaMedica, CitaMedicaSchema } from './schemas/citaMedica.schema';
-import { CitaMedicaPresencial, citaMedicaPresencialchema } from './schemas/citaMedicaPresencial.schema';
-import { CitaMedicaVirtual, CitaMedicaVirtualSchema } from './schemas/citaMedicaVirtual.schema';
-import { Diagnostico,Diagnosticochema } from './schemas/diagnostico.schema'
-import { Enfermedad, Enfermedadschema } from './schemas/enfermedad.schema'
-import { Medicina, Medicinachema } from './schemas/medicina.schema'
-import { Receta, Recetachema } from './schemas/receta.schema'
-import { Zona, ZonaSchema } from './schemas/zona.schema'
+import {
+  CitaMedicaPresencial,
+  citaMedicaPresencialchema,
+} from './schemas/citaMedicaPresencial.schema';
+import {
+  CitaMedicaVirtual,
+  CitaMedicaVirtualSchema,
+} from './schemas/citaMedicaVirtual.schema';
+import { Diagnostico, Diagnosticochema } from './schemas/diagnostico.schema';
+import { Enfermedad, Enfermedadschema } from './schemas/enfermedad.schema';
+import { Medicina, Medicinachema } from './schemas/medicina.schema';
+import { Receta, Recetachema } from './schemas/receta.schema';
+import { Zona, ZonaSchema } from './schemas/zona.schema';
 import * as Joi from 'joi';
 import { CitasRepository } from './citas.repository';
 
@@ -37,7 +50,7 @@ import { CitasRepository } from './citas.repository';
       { name: Zona.name, schema: ZonaSchema },
     ]),
   ],
-  controllers: [CitasController],
-  providers: [CitasService, CitasRepository],
+  controllers: [CitaPresencialController, CitaVirtualController],
+  providers: [CitaPresencialService, CitaVirtualService, CitasRepository],
 })
 export class CitasModule {}
