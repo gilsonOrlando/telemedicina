@@ -15,8 +15,5 @@ export class Zona extends AbstractDocument {
 
   @Prop({ required: true })
   sintomas: string[];
-
-  @Prop({ required: true })
-  imagen: string;
 }
 export const ZonaSchema = SchemaFactory.createForClass(Zona);
