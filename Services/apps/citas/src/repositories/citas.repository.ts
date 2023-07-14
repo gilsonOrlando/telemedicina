@@ -2,14 +2,16 @@ import { Injectable, Logger } from '@nestjs/common';
 import { AbstractRepository } from '@app/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Model, Connection } from 'mongoose';
-import { CitaMedica } from './schemas/citaMedica.schema';
-import { CitaMedicaPresencial } from './schemas/citaMedicaPresencial.schema';
-import { CitaMedicaVirtual } from './schemas/citaMedicaVirtual.schema';
-import { Diagnostico } from './schemas/diagnostico.schema';
-import { Enfermedad } from './schemas/enfermedad.schema';
-import { Medicina } from './schemas/medicina.schema';
-import { Receta } from './schemas/receta.schema';
-import { Zona } from './schemas/zona.schema';
+import { CitaMedica } from '../schemas/citaMedica.schema';
+import { CitaMedicaPresencial } from '../schemas/citaMedicaPresencial.schema';
+import { CitaMedicaVirtual } from '../schemas/citaMedicaVirtual.schema';
+import { Diagnostico } from '../schemas/diagnostico.schema';
+import { Enfermedad } from '../schemas/enfermedad.schema';
+import { Medicina } from '../schemas/medicina.schema';
+import { Receta } from '../schemas/receta.schema';
+import { Zona } from '../schemas/zona.schema';
+import { Doctor } from '../schemas/doctor.schema';
+import { Extremidad } from '../schemas/extremidad.schema';
 
 @Injectable()
 export class CitasRepository extends AbstractRepository<
@@ -21,6 +23,8 @@ export class CitasRepository extends AbstractRepository<
   | Medicina
   | Receta
   | Zona
+  | Doctor
+  | Extremidad
 > {
   protected readonly logger = new Logger(CitasRepository.name);
   private citaMedicaModel: Model<CitaMedica>;
@@ -31,6 +35,8 @@ export class CitasRepository extends AbstractRepository<
   private medicinaModel: Model<Medicina>;
   private recetaModel: Model<Receta>;
   private zonaModel: Model<Zona>;
+  private doctorModel: Model<Doctor>;
+  private extremidadModel: Model<Extremidad>;
 
   constructor(
     @InjectModel(CitaMedica.name) citaMedicaModel: Model<CitaMedica>,
@@ -43,6 +49,8 @@ export class CitasRepository extends AbstractRepository<
     @InjectModel(Medicina.name) medicinaModel: Model<Medicina>,
     @InjectModel(Receta.name) recetaModel: Model<Receta>,
     @InjectModel(Zona.name) zonaModel: Model<Zona>,
+    @InjectModel(Doctor.name) doctorModel: Model<Doctor>,
+    @InjectModel(Extremidad.name) extremidadModel: Model<Extremidad>,
     @InjectConnection() connection: Connection,
   ) {
     super(citaMedicaModel, connection);
@@ -54,5 +62,7 @@ export class CitasRepository extends AbstractRepository<
     this.medicinaModel = medicinaModel;
     this.recetaModel = recetaModel;
     this.zonaModel = zonaModel;
+    this.doctorModel = doctorModel;
+    this.extremidadModel = extremidadModel;
   }
 }

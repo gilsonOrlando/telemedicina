@@ -1,15 +1,16 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { Cuenta } from './cuenta.schema';
-import { ConsultaPadecimiento } from './consultaPadecimiento.schema';
-import { Revision } from './revision.schema';
+import { Cuenta } from '../../../../../libs/common/src/schemas/cuenta.schema';
+import { ConsultaPadecimiento } from '../../../../../libs/common/src/schemas/consultaPadecimiento.schema';
+import { Revision } from '../../../../../libs/common/src/schemas/revision.schema';
+import { AbstractDocument } from '../../../../../libs/common/src/database/abstract.schema';
 
 //TODO el schema de los Circuitos
 export type PersonaDocument = HydratedDocument<Persona>;
 
 @Schema()
-export class Persona {
+export class Persona extends AbstractDocument{
   @Prop({ required: true, unique: true })
   nombre: string;
 

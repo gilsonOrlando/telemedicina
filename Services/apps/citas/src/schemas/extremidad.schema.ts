@@ -7,5 +7,8 @@ export type ExtremidadDocument = HydratedDocument<Extremidad>;
 
 export class Extremidad extends AbstractDocument {
     @Prop({ required: true })
+    nombre: string
+
+    @Prop({ required: true })
     imagen: string;
 }

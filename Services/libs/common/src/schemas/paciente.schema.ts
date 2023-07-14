@@ -4,7 +4,7 @@ import { HydratedDocument } from 'mongoose';
 import { Cuenta } from './cuenta.schema';
 import { ConsultaPadecimiento } from './consultaPadecimiento.schema';
 import { Revision } from './revision.schema';
-import { Persona } from './persona.schemas';
+import { Persona } from '../../../../apps/auth/src/users/schemas/persona.schemas';
 
 //TODO el schema de los Circuitos
 export type PacienteDocument = HydratedDocument<Paciente>;

@@ -2,12 +2,13 @@ import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { Rol } from './enums/rol.enum';
+import { AbstractDocument } from '@app/common';
 
 //TODO el schema de los Circuitos
 export type CuentaDocument = HydratedDocument<Cuenta>;
 
 @Schema()
-export class Cuenta {
+export class Cuenta extends AbstractDocument{
   @Prop({ required: true, unique: true })
   usuario: string;
 

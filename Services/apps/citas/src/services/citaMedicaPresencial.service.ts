@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CitasRepository } from '../citas.repository';
+import { CitasRepository } from '../repositories/citas.repository';
 import {
   createCitaMedicaPresencialDto,
   updateCitaMedicaPresencialDto,
