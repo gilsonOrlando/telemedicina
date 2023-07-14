@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { Persona } from './persona.schemas';
+import { Persona } from '../../../../apps/auth/src/users/schemas/persona.schemas';
 
 //TODO el schema de los Circuitos
 export type CategoriesDocument = HydratedDocument<Alergia>;

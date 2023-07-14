@@ -1,9 +1,9 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { Especialidad } from './enums/especialidad.enum';
-import { HorarioAtencion } from './horarioAtencion.schema';
-import { Persona } from './persona.schemas';
+import { Especialidad } from '../../../../libs/common/src/schemas/enums/especialidad.enum';
+import { HorarioAtencion } from '../../../../libs/common/src/schemas/horarioAtencion.schema';
+import { Persona } from '../../../auth/src/users/schemas/persona.schemas';
 
 //TODO el schema de los Circuitos
 export type DoctorDocument = HydratedDocument<Doctor>;

@@ -26,7 +26,7 @@ import { Medicina, Medicinachema } from './schemas/medicina.schema';
 import { Receta, Recetachema } from './schemas/receta.schema';
 import { Zona, ZonaSchema } from './schemas/zona.schema';
 import * as Joi from 'joi';
-import { CitasRepository } from './citas.repository';
+import { CitasRepository } from './repositories/citas.repository';
 
 @Module({
   imports: [
