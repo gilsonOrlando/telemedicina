@@ -28,6 +28,15 @@ import { Zona, ZonaSchema } from './schemas/zona.schema';
 import * as Joi from 'joi';
 import { CitasRepository } from './repositories/citas.repository';
 
+
+
+import { CitaMedicaController } from './controllers/citaMedica.controller';
+import { CitaMedicaService } from './services/citaMedica.service';
+import { ExtremidadRepository } from './repositories/extremidad.repository';
+import { DoctorRepository } from './repositories/doctor.repository';
+import { Extremidad, Extremidadschema } from './schemas/extremidad.schema';
+import { Doctor, DoctorSchema } from './schemas/doctor.schema';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -48,9 +57,11 @@ import { CitasRepository } from './repositories/citas.repository';
       { name: Medicina.name, schema: Medicinachema },
       { name: Receta.name, schema: Recetachema },
       { name: Zona.name, schema: ZonaSchema },
+      { name: Extremidad.name, schema: Extremidadschema },
+      { name: Doctor.name, schema: DoctorSchema},
     ]),
   ],
-  controllers: [CitaPresencialController, CitaVirtualController],
-  providers: [CitaPresencialService, CitaVirtualService, CitasRepository],
+  controllers: [CitaPresencialController, CitaVirtualController, CitaMedicaController],
+  providers: [CitaPresencialService, CitaVirtualService, CitaMedicaService, CitasRepository, ExtremidadRepository, DoctorRepository],
 })
 export class CitasModule {}
