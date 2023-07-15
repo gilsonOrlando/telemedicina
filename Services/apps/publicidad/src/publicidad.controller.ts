@@ -19,8 +19,9 @@ export class PublicidadController {
 
   @EventPattern('get_publicidad')
   async handleGetPublicidad(@Payload() data: any, @Ctx() context: RmqContext) {
-    this.publicidadService.getPublicidad();
+    const publicidades = this.publicidadService.getPublicidad();
     this.rmqService.ack(context);
+    return publicidades;
   }
 
   // @Post('publicidad')
@@ -30,7 +31,8 @@ export class PublicidadController {
 
   @EventPattern('create_publicidad')
   async handleCreatePublicidad(@Payload() data: any, @Ctx() context: RmqContext) {
-    this.publicidadService.createPublicidad(data);
+    const publicidad = this.publicidadService.createPublicidad(data);
     this.rmqService.ack(context);
+    return publicidad;
   }
 }

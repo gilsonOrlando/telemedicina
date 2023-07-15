@@ -13,14 +13,28 @@ export class PublicidadService {
 
   async getPublicidad() {
     try {
-      this.publicidadServiceClient.emit('get_publicidad', {});
+      return new Promise((resolve, reject) => {
+        this.publicidadServiceClient
+          .send('get_publicidad', {})
+          .subscribe({
+            next: (publicidades) => resolve(publicidades),
+            error: (err) => reject(err),
+          });
+      });
     } catch (err) {
       throw err;
     }
   }
   async createPublicidad(publicidad: PublicidadDto) {
     try {
-      this.publicidadServiceClient.emit('create_publicidad', publicidad);
+      return new Promise((resolve, reject) => {
+        this.publicidadServiceClient
+          .send('create_publicidad', publicidad)
+          .subscribe({
+            next: (publicidad) => resolve(publicidad),
+            error: (err) => reject(err),
+          });
+      });
     } catch (err) {
       throw err;
     }
