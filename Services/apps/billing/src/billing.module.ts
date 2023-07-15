@@ -15,7 +15,7 @@ import { ConfigModule } from '@nestjs/config';
       }),
     }),
     RmqModule,
-    AuthModule,
+    // AuthModule,
   ],
   controllers: [BillingController],
   providers: [BillingService],

@@ -24,7 +24,7 @@ import { BILLING_SERVICE } from './constants/services';
     RmqModule.register({
       name: BILLING_SERVICE,
     }),
-    AuthModule,
+    // AuthModule,
   ],
   controllers: [OrdersController],
   providers: [OrdersService, OrdersRepository],

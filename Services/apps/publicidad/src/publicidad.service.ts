@@ -5,9 +5,11 @@ import { Publicidad } from './schemas/publicidad.schema';
 @Injectable()
 export class PublicidadService {
   constructor(private readonly publicidadRepository: PublicidadRepository) {}
-  getPublicidad() {
+  
+  async getPublicidad() {
     return this.publicidadRepository.find({});
   }
+
   createPublicidad(publicidad: Publicidad) {
     return this.publicidadRepository.create(publicidad);
   }
