@@ -11,20 +11,20 @@ import { CitaVirtualService } from './services/citaMedicaVirtual.service';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CitaMedica, CitaMedicaSchema } from './schemas/citaMedica.schema';
+import { CitaMedica, CitaMedicaSchema } from '../../../libs/common/src/schemas/citaMedica.schema';
 import {
   CitaMedicaPresencial,
   citaMedicaPresencialchema,
-} from './schemas/citaMedicaPresencial.schema';
+} from '@app/common';
 import {
   CitaMedicaVirtual,
   CitaMedicaVirtualSchema,
-} from './schemas/citaMedicaVirtual.schema';
-import { Diagnostico, Diagnosticochema } from './schemas/diagnostico.schema';
-import { Enfermedad, Enfermedadschema } from './schemas/enfermedad.schema';
-import { Medicina, Medicinachema } from './schemas/medicina.schema';
-import { Receta, Recetachema } from './schemas/receta.schema';
-import { Zona, ZonaSchema } from './schemas/zona.schema';
+} from '@app/common';
+import { Diagnostico, Diagnosticochema } from '@app/common';
+import { Enfermedad, Enfermedadschema } from '@app/common';
+import { Medicina, Medicinachema } from '@app/common';
+import { Receta, Recetachema } from '@app/common';
+import { Zona, ZonaSchema } from '@app/common';
 import * as Joi from 'joi';
 import { CitasRepository } from './repositories/citas.repository';
 
@@ -34,8 +34,8 @@ import { CitaMedicaController } from './controllers/citaMedica.controller';
 import { CitaMedicaService } from './services/citaMedica.service';
 import { ExtremidadRepository } from './repositories/extremidad.repository';
 import { DoctorRepository } from './repositories/doctor.repository';
-import { Extremidad, Extremidadschema } from './schemas/extremidad.schema';
-import { Doctor, DoctorSchema } from './schemas/doctor.schema';
+import { Extremidad, Extremidadschema } from '@app/common';
+import { Doctor, DoctorSchema } from '@app/common';
 
 @Module({
   imports: [

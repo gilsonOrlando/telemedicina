@@ -2,14 +2,14 @@ import { Injectable, Logger } from '@nestjs/common';
 import { AbstractRepository } from '@app/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Model, Connection } from 'mongoose';
-import { CitaMedica } from '../schemas/citaMedica.schema';
-import { CitaMedicaPresencial } from '../schemas/citaMedicaPresencial.schema';
-import { CitaMedicaVirtual } from '../schemas/citaMedicaVirtual.schema';
-import { Diagnostico } from '../schemas/diagnostico.schema';
-import { Enfermedad } from '../schemas/enfermedad.schema';
-import { Medicina } from '../schemas/medicina.schema';
-import { Receta } from '../schemas/receta.schema';
-import { Zona } from '../schemas/zona.schema';
+import { CitaMedica } from '@app/common';
+import { CitaMedicaPresencial } from '@app/common';
+import { CitaMedicaVirtual } from '@app/common';
+import { Diagnostico } from '@app/common';
+import { Enfermedad } from '@app/common';
+import { Medicina } from '@app/common';
+import { Receta } from '@app/common';
+import { Zona } from '@app/common';
 
 @Injectable()
 export class CitasRepository extends AbstractRepository<

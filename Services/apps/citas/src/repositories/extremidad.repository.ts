@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { AbstractRepository } from '@app/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Model, Connection } from 'mongoose';
-import { Extremidad } from '../schemas/extremidad.schema';
+import { Extremidad } from '@app/common';
 
 @Injectable()
 export class ExtremidadRepository extends AbstractRepository<Extremidad

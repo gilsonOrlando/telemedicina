@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { DatabaseModule, RmqModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Publicidad, PublicidadSchema } from 'apps/publicidad/src/schemas/publicidad.schema';
+import { Publicidad, PublicidadSchema } from '@app/common';
 import { PublicidadController } from './publicidad/publicidad-gateway.controller';
 import { PublicidadService } from './publicidad/publicidad-gateway.service';
 

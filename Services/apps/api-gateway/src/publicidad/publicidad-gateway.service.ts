@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { PUBLICIDAD_SERVICE } from 'apps/orders/src/constants/services';
-import { PublicidadRepository } from 'apps/publicidad/src/publicidad.repository';
 import { PublicidadDto } from './dtos/publicidad.dto';
 
 

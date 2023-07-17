@@ -1,6 +1,5 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller} from '@nestjs/common';
 import { PublicidadService } from './publicidad.service';
-import { Publicidad } from './schemas/publicidad.schema';
 import { RmqService } from '@app/common';
 import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
 

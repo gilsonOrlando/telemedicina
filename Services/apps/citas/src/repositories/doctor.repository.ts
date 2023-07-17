@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { AbstractRepository } from '@app/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Model, Connection } from 'mongoose';
-import { Doctor } from '../schemas/doctor.schema';
+import { Doctor } from '@app/common';
 
 @Injectable()
 export class DoctorRepository extends AbstractRepository<Doctor

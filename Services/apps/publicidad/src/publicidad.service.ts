@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PublicidadRepository } from './publicidad.repository';
-import { Publicidad } from './schemas/publicidad.schema';
+import { Publicidad } from '@app/common';
 
 @Injectable()
 export class PublicidadService {

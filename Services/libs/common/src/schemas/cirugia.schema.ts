@@ -2,12 +2,13 @@ import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { Paciente } from './paciente.schema';
+import { AbstractDocument } from '../database/abstract.schema';
 
 //TODO el schema de los Circuitos
-export type CategoriesDocument = HydratedDocument<Cirugia>;
+export type CirugiaDocument = HydratedDocument<Cirugia>;
 
 @Schema()
-export class Cirugia {
+export class Cirugia extends AbstractDocument{
   @Prop()
   descripcion: string;
   @Prop({
@@ -17,4 +18,4 @@ export class Cirugia {
   })
   paciente: Paciente[];
 }
-export const CategorySchema = SchemaFactory.createForClass(Cirugia);
+export const CirugiaSchema = SchemaFactory.createForClass(Cirugia);

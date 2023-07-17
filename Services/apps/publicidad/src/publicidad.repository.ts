@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Publicidad } from './schemas/publicidad.schema';
+import { Publicidad } from '@app/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Model, Connection } from 'mongoose';
 import { AbstractRepository } from '@app/common';

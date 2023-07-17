@@ -6,7 +6,7 @@ import { DatabaseModule, RmqModule, AuthModule } from '@app/common';
 import { OrdersController } from './orders.controller';
 import { OrdersService } from './orders.service';
 import { OrdersRepository } from './orders.repository';
-import { Order, OrderSchema } from './schemas/order.schema';
+import { Order, OrderSchema } from '@app/common';
 import { BILLING_SERVICE } from './constants/services';
 
 @Module({

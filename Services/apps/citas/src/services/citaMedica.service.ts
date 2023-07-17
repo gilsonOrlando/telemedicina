@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CitasRepository } from '../repositories/citas.repository';
-import { Doctor } from '../schemas/doctor.schema';
-import { Extremidad } from '../schemas/extremidad.schema';
+import { Doctor } from '@app/common';
+import { Extremidad } from '@app/common';
 import { ExtremidadRepository } from '../repositories/extremidad.repository';
 import { DoctorRepository } from '../repositories/doctor.repository';
 
