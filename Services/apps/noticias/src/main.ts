@@ -7,8 +7,8 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(NoticiasModule);
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Apis Noticia')
+    .setDescription('Documentación del modulo noticia')
     .setVersion('1.0')
     .addTag('cats')
     .build();

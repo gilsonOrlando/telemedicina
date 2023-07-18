@@ -8,8 +8,8 @@ async function bootstrap() {
   const app = await NestFactory.create(ApiGatewayModule);
 
   const config = new DocumentBuilder()
-  .setTitle('Cats example')
-  .setDescription('The cats API description')
+  .setTitle('Api citas medicas')
+  .setDescription('Modulo general de citas medicas')
   .setVersion('1.0')
   .addTag('cats')
   .build();

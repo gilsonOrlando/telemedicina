@@ -8,8 +8,8 @@ async function bootstrap() {
   const app = await NestFactory.create(CitasModule);
 
   const config = new DocumentBuilder()
-  .setTitle('Cats example')
-  .setDescription('The cats API description')
+  .setTitle('Apis Cita')
+  .setDescription('Documentacion del modulo citas')
   .setVersion('1.0')
   .addTag('cats')
   .build();
