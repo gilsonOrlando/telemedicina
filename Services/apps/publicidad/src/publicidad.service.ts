@@ -10,7 +10,11 @@ export class PublicidadService {
     return this.publicidadRepository.find({});
   }
 
-  createPublicidad(publicidad: Publicidad) {
+  async createPublicidad(publicidad: Publicidad) {
     return this.publicidadRepository.create(publicidad);
+  }
+
+  async updatePublicidad(objetoPublicidad: {id : string, publicidad: Publicidad}) {
+    return this.publicidadRepository.findOneAndUpdate({_id: objetoPublicidad.id}, objetoPublicidad.publicidad)
   }
 }

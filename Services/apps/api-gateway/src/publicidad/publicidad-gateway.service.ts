@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { PUBLICIDAD_SERVICE } from 'apps/orders/src/constants/services';
-import { PublicidadDto } from './dtos/publicidad.dto';
+import { PublicidadDto, updatePublicidadDto } from './dtos/publicidad.dto';
 
 
 @Injectable()
@@ -29,6 +29,20 @@ export class PublicidadService {
       return new Promise((resolve, reject) => {
         this.publicidadServiceClient
           .send('create_publicidad', publicidad)
+          .subscribe({
+            next: (publicidad) => resolve(publicidad),
+            error: (err) => reject(err),
+          });
+      });
+    } catch (err) {
+      throw err;
+    }
+  }
+  async updatePublicidad(id:string,publicidad: updatePublicidadDto) {
+    try {
+      return new Promise((resolve, reject) => {
+        this.publicidadServiceClient
+          .send('update_publicidad',{id, publicidad})
           .subscribe({
             next: (publicidad) => resolve(publicidad),
             error: (err) => reject(err),

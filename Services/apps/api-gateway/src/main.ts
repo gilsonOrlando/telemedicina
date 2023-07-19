@@ -11,7 +11,7 @@ async function bootstrap() {
   .setTitle('Api citas medicas')
   .setDescription('Modulo general de citas medicas')
   .setVersion('1.0')
-  .addTag('cats')
+  .addTag('publicidad')
   .build();
 const document = SwaggerModule.createDocument(app, config);
 SwaggerModule.setup('api', app, document);

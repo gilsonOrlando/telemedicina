@@ -11,7 +11,7 @@ async function bootstrap() {
   .setTitle('Apis Cita')
   .setDescription('Documentacion del modulo citas')
   .setVersion('1.0')
-  .addTag('cats')
+  .addTag('citas')
   .build();
 const document = SwaggerModule.createDocument(app, config);
 SwaggerModule.setup('api', app, document);

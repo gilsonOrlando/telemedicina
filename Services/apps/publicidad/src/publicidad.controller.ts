@@ -34,4 +34,12 @@ export class PublicidadController {
     this.rmqService.ack(context);
     return publicidad;
   }
+
+  @EventPattern('update_publicidad')
+  async handleUpdatePublicidad(@Payload() data: any, @Ctx() context: RmqContext) {
+    const publicidad = this.publicidadService.updatePublicidad(data);
+    this.rmqService.ack(context);
+    return publicidad;
+  }
+
 }
