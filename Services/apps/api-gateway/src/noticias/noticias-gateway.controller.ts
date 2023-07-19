@@ -1,38 +1,38 @@
 import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
-import { PublicidadService } from './noticias-gateway.service';
-import { PublicidadDto, UpdatePublicidadDto } from './dtos/noticias.dto';
+import { NoticiasService } from './noticias-gateway.service';
+import { NoticiasDto, UpdateNoticiaDto } from './dtos/noticias.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/swagger';
 
-@ApiTags('publicidad')
+@ApiTags('noticias')
 @Controller()
-export class PublicidadController {
-  constructor(private readonly publicidadService: PublicidadService) { }
+export class NoticiasController {
+  constructor(private readonly NoticiasService: NoticiasService) { }
 
-  @Get('publicidad')
-  @ApiOperation({ summary: 'Obtener todas las publicidades' })
-  @ApiResponse({ status: 200, description: 'Éxito', type: PublicidadDto, isArray: true })
+  @Get('noticias')
+  @ApiOperation({ summary: 'Obtener todas las noticias' })
+  @ApiResponse({ status: 200, description: 'Éxito', type: NoticiasDto, isArray: true })
   getPublicidad() {
-    return this.publicidadService.getPublicidad();
+    return this.NoticiasService.getNoticias();
   }
 
-  @Post('new-publicidad')
-  @ApiOperation({ summary: 'Crear nueva publicidad' })
-  @ApiBody({ type: PublicidadDto })
-  @ApiResponse({ status: 201, description: 'Creado', type: PublicidadDto })
-  createPublicidad(@Body() publicidad: PublicidadDto) {
-    return this.publicidadService.createPublicidad(publicidad);
+  @Post('new-noticia')
+  @ApiOperation({ summary: 'Crear nueva noticia' })
+  @ApiBody({ type: NoticiasDto })
+  @ApiResponse({ status: 201, description: 'Creado', type: NoticiasDto })
+  createPublicidad(@Body() noticias: NoticiasDto) {
+    return this.NoticiasService.createNoticias(noticias);
   }
 
-  @Put('update-publicidad/:id')
-  @ApiOperation({ summary: 'Actualizar publicidad por ID' })
-  @ApiParam({ name: 'id', description: 'ID de la publicidad' })
-  @ApiBody({ type: UpdatePublicidadDto })
-  @ApiResponse({ status: 200, description: 'Éxito', type: PublicidadDto })
+  @Put('update-noticias/:id')
+  @ApiOperation({ summary: 'Actualizar noticias por ID' })
+  @ApiParam({ name: 'id', description: 'ID de la noticia' })
+  @ApiBody({ type: UpdateNoticiaDto })
+  @ApiResponse({ status: 200, description: 'Éxito', type: NoticiasDto })
   @ApiResponse({ status: 404, description: 'No encontrado' })
   updatePublicidad(
     @Param('id') id: string,
-    @Body() publicidad: UpdatePublicidadDto,
+    @Body() noticias: UpdateNoticiaDto,
   ) {
-    return this.publicidadService.updatePublicidad(id, publicidad);
+    return this.NoticiasService.updateNoticias(id, noticias);
   }
 }

@@ -1,22 +1,21 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { PUBLICIDAD_SERVICE } from 'apps/orders/src/constants/services';
-import { PublicidadDto, updatePublicidadDto } from './dtos/noticias.dto';
-
+import { NOTICIAS_SERVICE } from 'apps/orders/src/constants/services';
+import { NoticiasDto, UpdateNoticiaDto } from './dtos/noticias.dto';
 
 @Injectable()
-export class PublicidadService {
+export class NoticiasService {
   constructor(
-    @Inject(PUBLICIDAD_SERVICE) private readonly publicidadServiceClient: ClientProxy,
+    @Inject(NOTICIAS_SERVICE) private readonly noticiasServiceClient: ClientProxy,
   ) {}
 
-  async getPublicidad() {
+  async getNoticias() {
     try {
       return new Promise((resolve, reject) => {
-        this.publicidadServiceClient
-          .send('get_publicidad', {})
+        this.noticiasServiceClient
+          .send('get_noticias', {})
           .subscribe({
-            next: (publicidades) => resolve(publicidades),
+            next: (noticias) => resolve(noticias),
             error: (err) => reject(err),
           });
       });
@@ -24,13 +23,13 @@ export class PublicidadService {
       throw err;
     }
   }
-  async createPublicidad(publicidad: PublicidadDto) {
+  async createNoticias(noticias: NoticiasDto) {
     try {
       return new Promise((resolve, reject) => {
-        this.publicidadServiceClient
-          .send('create_publicidad', publicidad)
+        this.noticiasServiceClient
+          .send('create_noticias', noticias)
           .subscribe({
-            next: (publicidad) => resolve(publicidad),
+            next: (noticias) => resolve(noticias),
             error: (err) => reject(err),
           });
       });
@@ -38,13 +37,13 @@ export class PublicidadService {
       throw err;
     }
   }
-  async updatePublicidad(id:string,publicidad: updatePublicidadDto) {
+  async updateNoticias(id:string,noticias: UpdateNoticiaDto) {
     try {
       return new Promise((resolve, reject) => {
-        this.publicidadServiceClient
-          .send('update_publicidad',{id, publicidad})
+        this.noticiasServiceClient
+          .send('update_noticias',{id, noticias})
           .subscribe({
-            next: (publicidad) => resolve(publicidad),
+            next: (noticias) => resolve(noticias),
             error: (err) => reject(err),
           });
       });
@@ -53,4 +52,3 @@ export class PublicidadService {
     }
   }
 }
-
