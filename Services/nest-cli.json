@@ -52,6 +52,33 @@
       "compilerOptions": {
         "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
       }
+    },
+    "consultas": {
+      "type": "application",
+      "root": "apps/consultas",
+      "entryFile": "main",
+      "sourceRoot": "apps/consultas/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/consultas/tsconfig.app.json"
+      }
+    },
+    "tu-salud": {
+      "type": "application",
+      "root": "apps/tu-salud",
+      "entryFile": "main",
+      "sourceRoot": "apps/tu-salud/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/tu-salud/tsconfig.app.json"
+      }
+    },
+    "atencion-virtualizada": {
+      "type": "application",
+      "root": "apps/atencion-virtualizada",
+      "entryFile": "main",
+      "sourceRoot": "apps/atencion-virtualizada/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/atencion-virtualizada/tsconfig.app.json"
+      }
     }
   }
 }
