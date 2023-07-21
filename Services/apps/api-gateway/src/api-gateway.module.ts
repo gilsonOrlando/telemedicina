@@ -7,6 +7,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Publicidad, PublicidadSchema } from '@app/common';
 import { PublicidadController } from './publicidad/publicidad-gateway.controller';
 import { PublicidadService } from './publicidad/publicidad-gateway.service';
+import { NoticiasController } from './noticias/noticias-gateway.controller';
+import { NoticiasService } from './noticias/noticias-gateway.service';
 
 @Module({
   imports: [
@@ -25,7 +27,7 @@ import { PublicidadService } from './publicidad/publicidad-gateway.service';
     }),
     // AuthModule,
   ],
-  controllers: [PublicidadController],
-  providers: [PublicidadService],
+  controllers: [PublicidadController, NoticiasController],
+  providers: [PublicidadService, NoticiasService],
 })
 export class ApiGatewayModule {}

@@ -26,3 +26,4 @@ export * from './schemas/receta.schema';
 export * from './schemas/recomendacion.schema';
 export * from './schemas/revision.schema';
 export * from './schemas/zona.schema';
+export * from './schemas/noticias.schema';

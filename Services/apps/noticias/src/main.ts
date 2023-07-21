@@ -20,3 +20,11 @@ async function bootstrap() {
   await app.listen(configService.get('PORT'));
 }
 bootstrap();
+
+import { RmqService } from '@app/common';
+
+  const rmqService = app.get<RmqService>(RmqService);
+  app.connectMicroservice(rmqService.getOptions('PUBLICIDAD_SERVICE'));
+  await app.startAllMicroservices();
+}
+bootstrap();

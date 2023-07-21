@@ -20,3 +20,7 @@ describe('NoticiasController', () => {
     });
   });
 });
+
+
+import { PublicidadController } from './publicidad.controller';
+import { PublicidadService } from './publicidad.service';
