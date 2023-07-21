@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { NoticiasController } from './noticias.controller';
 import { NoticiasService } from './noticias.service';
 
+
 describe('NoticiasController', () => {
   let noticiasController: NoticiasController;
 
@@ -20,7 +21,3 @@ describe('NoticiasController', () => {
     });
   });
 });
-
-
-import { PublicidadController } from './publicidad.controller';
-import { PublicidadService } from './publicidad.service';

@@ -1,8 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { NoticiasRepository } from './noticias.repository';
-import { createNoticiaDto } from './noticias.dto';
-import {Noti} from '@app/common'
+import {Noticia} from '@app/common'
 
 @Injectable()
 export class NoticiasService {
@@ -11,19 +10,13 @@ export class NoticiasService {
   async getNoticias() {
     return this.noticiasRepository.find({});
   }
-  async createNoticia(noticia: createNoticiaDto) {
+  async createNoticia(noticia: Noticia) {
     return this.noticiasRepository.create(noticia);
   }
-}
-
-
-import { Publicidad } from '@app/common';
-
-  async createPublicidad(publicidad: Publicidad) {
-    return this.publicidadRepository.create(publicidad);
+  async updatePublicidad(objetoNoticia: {id : string, noticia: Noticia}) {
+    return this.noticiasRepository.findOneAndUpdate({_id: objetoNoticia.id}, objetoNoticia.noticia)
   }
-
-  async updatePublicidad(objetoPublicidad: {id : string, publicidad: Publicidad}) {
-    return this.publicidadRepository.findOneAndUpdate({_id: objetoPublicidad.id}, objetoPublicidad.publicidad)
-  }
+  //async deletePublicidad(objetoPublicidad: {id : string, noticia: Noticia}) {
+    //return this.noticiasRepository.upsert
+  //}
 }

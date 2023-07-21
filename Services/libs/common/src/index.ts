@@ -1,3 +1,7 @@
+//CONSTANTS
+export * from './constants/services';
+
+
 export * from './database/database.module';
 export * from './database/abstract.repository';
 export * from './database/abstract.schema';
@@ -27,3 +31,5 @@ export * from './schemas/recomendacion.schema';
 export * from './schemas/revision.schema';
 export * from './schemas/zona.schema';
 export * from './schemas/noticias.schema';
+
+

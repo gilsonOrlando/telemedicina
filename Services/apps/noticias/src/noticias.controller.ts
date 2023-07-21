@@ -1,62 +1,39 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { NoticiasService } from './noticias.service';
-import { createNoticiaDto } from './noticias.dto';
-
-@Controller()
-export class NoticiasController {
-  constructor(private readonly noticiasService: NoticiasService) {}
-
-  @Get('noticias')
-  getNoticias() {
-    return this.noticiasService.getNoticias();
-  }
-  @Post('noticias')
-  createNoticia(@Body() noticia: createNoticiaDto) {
-    return this.noticiasService.createNoticia(noticia);
-  }
-}
-
-
-import { PublicidadService } from './publicidad.service';
 import { RmqService } from '@app/common';
 import { Ctx, EventPattern, Payload, RmqContext } from '@nestjs/microservices';
 
-
 @Controller()
-export class PublicidadController {
-  constructor(
-    private readonly publicidadService: PublicidadService,
-    private readonly rmqService: RmqService,
-    ) {}
+export class NoticiasController {
+  constructor(private readonly noticiasService: NoticiasService,
+    private readonly rmqService: RmqService,) {}
 
-  // @Get('publicidad')
-  // getPublicidad() {
-  //   return this.publicidadService.getPublicidad();
-  // }
-
-  @EventPattern('get_publicidad')
+  //@Get('noticias')
+  //getNoticias() {
+    //return this.noticiasService.getNoticias();
+  //}
+  //@Post('noticias')
+  //createNoticia(@Body() noticia: createNoticiaDto) {
+    //return this.noticiasService.createNoticia(noticia);
+  //}
+  @EventPattern('get_noticias')
   async handleGetPublicidad(@Payload() data: any, @Ctx() context: RmqContext) {
-    const publicidades = this.publicidadService.getPublicidad();
+    const noticias = this.noticiasService.getNoticias();
     this.rmqService.ack(context);
-    return publicidades;
+    return noticias;
   }
 
-  // @Post('publicidad')
-  // createPublicidad(@Body() publicidad: Publicidad) {
-  //   return this.publicidadService.createPublicidad(publicidad);
-  // }
-
-  @EventPattern('create_publicidad')
+  @EventPattern('create_noticias')
   async handleCreatePublicidad(@Payload() data: any, @Ctx() context: RmqContext) {
-    const publicidad = this.publicidadService.createPublicidad(data);
+    const noticias = this.noticiasService.createNoticia(data);
     this.rmqService.ack(context);
-    return publicidad;
+    return noticias;
   }
 
-  @EventPattern('update_publicidad')
+  @EventPattern('update_noticias')
   async handleUpdatePublicidad(@Payload() data: any, @Ctx() context: RmqContext) {
-    const publicidad = this.publicidadService.updatePublicidad(data);
+    const noticias = this.noticiasService.updatePublicidad(data);
     this.rmqService.ack(context);
-    return publicidad;
+    return noticias;
   }
 }

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { NOTICIAS_SERVICE } from 'apps/orders/src/constants/services';
+import { NOTICIAS_SERVICE } from '@app/common';
 import { NoticiasDto, UpdateNoticiaDto } from './dtos/noticias.dto';
 
 @Injectable()

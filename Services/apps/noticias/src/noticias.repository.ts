@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { AbstractRepository } from '@app/common';
 import { InjectModel, InjectConnection } from '@nestjs/mongoose';
 import { Model, Connection } from 'mongoose';
-import { Noticia } from '../../../libs/common/src/schemas/noticias.schema';
+import { Noticia } from '@app/common';
 
 @Injectable()
 export class NoticiasRepository extends AbstractRepository<Noticia> {
@@ -15,6 +15,3 @@ export class NoticiasRepository extends AbstractRepository<Noticia> {
     super(noticiaModel, connection);
   }
 }
-
-import { Publicidad } from '@app/common';
-import { AbstractRepository } from '@app/common';
