@@ -1,0 +1,1 @@
+export const PUBLICIDAD_SERVICE = 'PUBLICIDAD';

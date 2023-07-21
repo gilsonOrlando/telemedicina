@@ -22,7 +22,7 @@ export class Doctor extends Persona {
       },
     ],
   })
-  horarios: HorarioAtencion;
+  horarios: HorarioAtencion[];
 
   @Prop({ required: true })
   fotografia: string;

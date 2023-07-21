@@ -17,4 +17,10 @@ export class CitaMedicaService{
     async getDoctor(): Promise<Doctor[]>{
         return this.doctorRepository.find({});
     }
+    async getDoctorByEspecialidad(especialidad: string): Promise<Doctor[]>{
+        return this.doctorRepository.find({especialidad: especialidad});
+    }
+    async getHorarioAtencion(doctor: string): Promise<Doctor[]>{
+        return this.doctorRepository.find({_id: doctor});
+    }
 }

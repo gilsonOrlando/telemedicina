@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { Cuenta } from './cuenta.schema';
+import { Doctor } from './doctor.schema';
 
 //TODO el schema de los Circuitos
 export type HorarioAtencionDocument = HydratedDocument<HorarioAtencion>;
@@ -9,30 +9,18 @@ export type HorarioAtencionDocument = HydratedDocument<HorarioAtencion>;
 @Schema()
 export class HorarioAtencion {
   @Prop()
-  nombre: string;
+  horario_inicio: string;
 
   @Prop()
-  edad: number;
+  horario_fin: string;
 
   @Prop()
-  correo: string;
+  dias_atencion: string[];
 
   @Prop({
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cuenta' }],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' }],
   })
-  cuenta: Cuenta;
-
-  @Prop()
-  telefono: string;
-
-  //@Prop()
-  //cuenta: String;
-
-  @Prop()
-  cedula: string;
-
-  @Prop()
-  genero: string;
+  doctor: Doctor[];
 }
 export const HorarioAtencionSchema =
   SchemaFactory.createForClass(HorarioAtencion);
