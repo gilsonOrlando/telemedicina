@@ -3,7 +3,7 @@ import { CitasRepository } from '../repositories/citas.repository';
 import {
   createCitaMedicaPresencialDto,
   updateCitaMedicaPresencialDto,
-} from '../dtos/citaPresencial.dto';
+} from '../../../api-gateway/src/citas/dtos/citaPresencial.dto';
 
 @Injectable()
 export class CitaPresencialService {

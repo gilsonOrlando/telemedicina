@@ -3,7 +3,7 @@ import { CitaPresencialService } from '../services/citaMedicaPresencial.service'
 import {
   createCitaMedicaPresencialDto,
   updateCitaMedicaPresencialDto,
-} from '../dtos/citaPresencial.dto';
+} from '../../../api-gateway/src/citas/dtos/citaPresencial.dto';
 
 @Controller()
 export class CitaVirtualController {
