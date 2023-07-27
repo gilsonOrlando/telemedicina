@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { PUBLICIDAD_SERVICE } from 'apps/orders/src/constants/services';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-import { DatabaseModule, RmqModule } from '@app/common';
+import { DatabaseModule, NOTICIAS_SERVICE, RmqModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { 
   Publicidad,
@@ -32,6 +32,9 @@ import { NoticiasService } from './noticias/noticias-gateway.service';
     ]),
     RmqModule.register({
       name: PUBLICIDAD_SERVICE,
+    }),
+    RmqModule.register({
+      name: NOTICIAS_SERVICE,
     }),
     // AuthModule,
   ],
