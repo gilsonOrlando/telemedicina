@@ -1,20 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CitasRepository } from '../repositories/citas.repository';
-import {
-  createCitaMedicaPresencialDto,
-  updateCitaMedicaPresencialDto,
-} from '../../../api-gateway/src/citas/dtos/citaPresencial.dto';
+import { CitaMedicaPresencial } from '@app/common';
 
 @Injectable()
 export class CitaPresencialService {
   constructor(private readonly citasRepository: CitasRepository) {}
 
-  async getCitas() {
-    return this.citasRepository.find({});
-  }
   async createCitaMedicaPresencial(
-    citaMedicaPresencial: createCitaMedicaPresencialDto,
+    citaMedicaPresencial: CitaMedicaPresencial,
   ) {
     return this.citasRepository.create(citaMedicaPresencial);
-  }
+  } 
 }
