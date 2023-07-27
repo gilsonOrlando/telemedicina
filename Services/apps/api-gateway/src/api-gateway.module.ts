@@ -4,7 +4,12 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { DatabaseModule, RmqModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Publicidad, PublicidadSchema } from '@app/common';
+import { 
+  Publicidad,
+  Noticia,
+  PublicidadSchema,
+  NoticiaSchema
+ } from '@app/common';
 import { PublicidadController } from './publicidad/publicidad-gateway.controller';
 import { PublicidadService } from './publicidad/publicidad-gateway.service';
 import { NoticiasController } from './noticias/noticias-gateway.controller';
@@ -21,13 +26,22 @@ import { NoticiasService } from './noticias/noticias-gateway.service';
       envFilePath: './apps/api-gateway/.env',
     }),
     DatabaseModule,
-    MongooseModule.forFeature([{ name: Publicidad.name, schema: PublicidadSchema}]),
+    MongooseModule.forFeature([
+      { name: Publicidad.name, schema: PublicidadSchema},
+      { name: Noticia.name, schema: NoticiaSchema}
+    ]),
     RmqModule.register({
       name: PUBLICIDAD_SERVICE,
     }),
     // AuthModule,
   ],
-  controllers: [PublicidadController, NoticiasController],
-  providers: [PublicidadService, NoticiasService],
+  controllers: [
+    PublicidadController, 
+    NoticiasController
+  ],
+  providers: [
+    PublicidadService, 
+    NoticiasService
+  ],
 })
 export class ApiGatewayModule {}
