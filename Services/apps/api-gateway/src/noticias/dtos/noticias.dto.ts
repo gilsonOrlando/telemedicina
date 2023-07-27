@@ -8,7 +8,7 @@ export class NoticiasDto {
   descripcion: string;
 
   @ApiProperty({ description: 'Fuente de la noticia', example: 'Veracidad de la noticia' })
-  fuente: string;
+  fuente: string; 
 
   @ApiProperty({ description: 'URL de la imagen de la noticia', example: 'https://ejemplo.com/imagen.jpg' })
   imagen: string;
