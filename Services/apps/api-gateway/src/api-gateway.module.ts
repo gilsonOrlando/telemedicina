@@ -20,7 +20,7 @@ import { PublicidadController } from './publicidad/publicidad-gateway.controller
 import { PublicidadService } from './publicidad/publicidad-gateway.service';
 import { NoticiasController } from './noticias/noticias-gateway.controller';
 import { NoticiasService } from './noticias/noticias-gateway.service';
-import { CitasGatewayController } from './citas/citas-gateway.controller';
+import { CitasController } from './citas/citas-gateway.controller';
 import { CitasGatewayService } from './citas/citas-gateway.service';
 
 @Module({
@@ -55,7 +55,7 @@ import { CitasGatewayService } from './citas/citas-gateway.service';
   controllers: [
     PublicidadController, 
     NoticiasController,
-    CitasGatewayController
+    CitasController
   ],
   providers: [
     PublicidadService, 
